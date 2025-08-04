@@ -6,7 +6,7 @@
 ARG GO_VERSION=1.16
 
 # Dynamically select the golang version.
-FROM golang:${GO_VERSION}-buster
+FROM golang:${GO_VERSION}-bullseye
 
 COPY /go.mod /go.mod
 
@@ -25,7 +25,7 @@ RUN cd / && CGO_ENABLED=0 GOOS=linux go build -ldflags "-X github.com/testground
 #::: RUNTIME CONTAINER
 #:::
 
-FROM golang:${GO_VERSION}-buster
+FROM golang:${GO_VERSION}-bullseye
 
 RUN mkdir -p /usr/local/bin
 COPY --from=0 /testground /testground
